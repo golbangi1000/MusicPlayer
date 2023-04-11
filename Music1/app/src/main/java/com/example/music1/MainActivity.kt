@@ -16,7 +16,7 @@ import com.example.music1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    val permission = android.Manifest.permission.READ_EXTERNAL_STORAGE
+    val permission = android.Manifest.permission.READ_MEDIA_AUDIO
     val REQ_READ = 99
 
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         if(isPermitted()){
             startProcess()
         } else {
-            ActivityCompat.requestPermissions(this, arrayOf(permission), REQ_READ)
+            ActivityCompat.requestPermissions(this, arrayOf<String>(permission), REQ_READ )
         }
     }
 
@@ -38,8 +38,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-
-
     }
 
     fun getMusicList(): List<Music>{
@@ -77,17 +75,20 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
         if(requestCode == REQ_READ){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Log.d("aaa1","?????????????????????????????????????????????")
                 startProcess()
             } else {
-                Log.d("aaa2","!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
                 Toast.makeText(this,"권한 요청을 승인해야지만 앱을 실행할수 있습니다", Toast.LENGTH_LONG).show()
 
@@ -95,8 +96,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        if(requestCode == 1234){
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        }
+
     }
 }

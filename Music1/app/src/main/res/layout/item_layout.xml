@@ -18,18 +18,18 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/Artist"
+        android:id="@+id/textArtist"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="Artist"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/TItle"
+        app:layout_constraintStart_toStartOf="@+id/textTItle"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/TItle"
+        android:id="@+id/textTItle"
         android:layout_width="298dp"
         android:layout_height="30dp"
         android:layout_marginBottom="32dp"
